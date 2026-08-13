@@ -11,6 +11,8 @@ tracking_backend.gs
 *.pdf
 assets/qr.png
 assets/p_*.png
+assets/aeion_logo_white.png
+aeion logo colored png.png
 
 # --- Credentials & secrets ---
 .env

@@ -31,14 +31,19 @@
     text-align: center;
     margin: 6px 0 14px;
   }
-  .brand .logo {
-    font-weight: 800;
-    letter-spacing: 4px;
-    font-size: 30px;
-    background: linear-gradient(90deg, var(--purple-dark), var(--purple-light));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
+  .brand .logo img { width: 168px; max-width: 60%; height: auto; display: block; margin: 0 auto; }
+  .brand .tag { font-size: 12px; color: var(--purple-dark); letter-spacing: 1px; margin-top: 6px; }
+  /* Korean origin: the main differentiator vs. unbranded local stock */
+  .brand .korea {
+    display: inline-flex; align-items: center; gap: 7px; margin-top: 10px;
+    font-size: 12px; font-weight: 700; color: var(--purple-dark);
+    background: #f3e8ff; border: 1px solid #dcc4f7;
+    border-radius: 20px; padding: 5px 13px;
   }
-  .brand .tag { font-size: 12px; color: var(--purple-dark); letter-spacing: 1px; }
+  .brand .korea .flag {
+    width: 21px; height: 14px; border-radius: 2px;
+    border: 1px solid #d9c8ee; flex-shrink: 0; display: block;
+  }
   .card {
     background: var(--card);
     border-radius: 20px;
@@ -81,10 +86,15 @@
     transition: transform 0.08s ease;
   }
   .btn:active { transform: scale(0.98); }
-  .btn.amazon { background: var(--amazon); color: #1c1030; }
-  .btn.flipkart { background: var(--flipkart); }
   .btn.cod { background: var(--purple); }
   .btn.wa { background: var(--whatsapp); }
+  .btn.site { background: var(--purple-dark); }
+  /* Marketplaces are deliberately secondary: direct order is the primary route. */
+  .btn.secondary {
+    background: #fff; border: 1.5px solid #e2d4f5; font-size: 14px; padding: 11px 14px;
+  }
+  .btn.secondary.amazon { color: #8a5000; }
+  .btn.secondary.flipkart { color: #1a4fa8; }
   .divider {
     text-align: center; font-size: 12px; color: #8a7aa5; margin: 2px 0;
     position: relative;
@@ -96,8 +106,9 @@
 <body>
   <div class="wrap">
     <div class="brand">
-      <div class="logo">AEION</div>
+      <div class="logo"><img src="assets/aeion_logo.png" alt="AEION" /></div>
       <div class="tag">SMART DASHCAMS &amp; FLEET SOLUTIONS</div>
+      <div class="korea"><img class="flag" src="assets/kr_flag.png" alt="South Korea" />Korean Brand &bull; कोरियन ब्रांड</div>
     </div>
 
     <div class="card">
@@ -126,19 +137,22 @@
       </div>
 
       <div class="actions">
-        <a class="btn amazon" id="lnk-amazon" href="https://amzn.in/d/0dKJCluH" rel="nofollow noopener" target="_blank">Buy on Amazon</a>
-        <a class="btn flipkart" id="lnk-flipkart" href="https://dl.flipkart.com/dl/aeion-1080p-dashcam-32gb-gps-360-view-alpr-wi-fi-cloud-parking-in-car-camera-system/p/itm63df45da1ad49?pid=VCYHDH5NTCNHPHSX&lid=LSTVCYHDH5NTCNHPHSXQZR4MA&marketplace=FLIPKART&store=1mt/kiq/t8u/w2o&fm=eyJ3dHAiOiJwcm9kdWN0Q2FyZExpc3QiLCJwcnB0Ijoic3AiLCJtaWQiOiJQUk9EVUNUIn0&_appId=CL" rel="nofollow noopener" target="_blank">Buy on Flipkart</a>
-
-        <div class="divider">— or order directly (Cash on Delivery) — <span class="hi">या सीधे ऑर्डर करें</span></div>
-
-        <!-- PLACEHOLDER: replace 910000000 with the real order number in both links -->
+        <!-- PRIMARY: order direct from AEION (best margin, keeps the customer relationship) -->
+        <!-- PLACEHOLDER: replace 910000000000 with the real order number in both links -->
         <a class="btn cod" id="lnk-call" href="tel:+910000000000">Call to Order &bull; कॉल करें</a>
         <a class="btn wa" id="lnk-wa" href="https://wa.me/910000000000?text=Hi%20AEION%2C%20I%20want%20to%20order%20the%20DRS-1CH%20dash%20cam%20(Cash%20on%20Delivery)." rel="noopener" target="_blank">WhatsApp to Order</a>
+        <a class="btn site" id="lnk-site" href="https://www.aeion.io" rel="noopener" target="_blank">Visit AEION Official Site</a>
+
+        <!-- SECONDARY: marketplaces, kept to catch buyers who won't transact direct -->
+        <div class="divider">— also available on — <span class="hi">यहाँ भी उपलब्ध</span></div>
+
+        <a class="btn secondary amazon" id="lnk-amazon" href="https://amzn.in/d/0dKJCluH" rel="nofollow noopener" target="_blank">Amazon</a>
+        <a class="btn secondary flipkart" id="lnk-flipkart" href="https://dl.flipkart.com/dl/aeion-1080p-dashcam-32gb-gps-360-view-alpr-wi-fi-cloud-parking-in-car-camera-system/p/itm63df45da1ad49?pid=VCYHDH5NTCNHPHSX&lid=LSTVCYHDH5NTCNHPHSXQZR4MA&marketplace=FLIPKART&store=1mt/kiq/t8u/w2o&fm=eyJ3dHAiOiJwcm9kdWN0Q2FyZExpc3QiLCJwcnB0Ijoic3AiLCJtaWQiOiJQUk9EVUNUIn0&_appId=CL" rel="nofollow noopener" target="_blank">Flipkart</a>
       </div>
 
       <div class="foot">
-        AEION &bull; aeion.io &bull; Genuine product &bull; 1-year warranty<br />
-        <span class="hi">असली उत्पाद &bull; 1 वर्ष वारंटी</span>
+        AEION &bull; Korean brand &bull; <a href="https://www.aeion.io" rel="noopener" target="_blank">www.aeion.io</a> &bull; Genuine product &bull; 1-year warranty<br />
+        <span class="hi">कोरियन ब्रांड &bull; असली उत्पाद &bull; 1 वर्ष वारंटी</span>
       </div>
     </div>
   </div>
@@ -208,7 +222,7 @@
 
   report("scan"); // Fires once per page load.
 
-  ["amazon", "flipkart", "call", "wa"].forEach(function (key) {
+  ["amazon", "flipkart", "call", "wa", "site"].forEach(function (key) {
     var el = document.getElementById("lnk-" + key);
     if (el) { el.addEventListener("click", function () { report("click_" + key); }); }
   });
